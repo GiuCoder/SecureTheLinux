@@ -1,4 +1,9 @@
 #!/bin/bash
+# Check if zenity is installed
+if ! command -v zenity &> /dev/null; then
+    echo -e "${RED}Zenity is not installed. Installing...${NC}"
+    sudo apt-get install zenity
+fi
 
 # This script will perform some basic security tasks to help secure a Linux system.
 
@@ -23,3 +28,5 @@ sudo systemctl start fail2ban
 sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 sudo systemctl restart sshd
+zenity --info --title "Success" --text "LINUX HAS BEEN SECURED! LINUX WILL REBOOT SYSTEM."
+reboot
