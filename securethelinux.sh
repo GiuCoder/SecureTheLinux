@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 
 # Check if running as root
 if [ "$(id -u)" != "0" ]; then
@@ -39,6 +40,14 @@ sudo apt-get update
 sudo apt-get upgrade
 echo -e "${GREEN}System updated!${NC}"
 echo ""
+clear
+# Print banner
+echo -e "${YELLOW}#######################################################"
+echo -e "#${BLUE}               Linux Security Script                ${YELLOW}#"
+echo -e "#${BLUE}                  Created By GiuCoder               ${YELLOW}#"
+echo -e "#######################################################${NC}"
+echo ""
+
 
 # Install and configure a firewall
 echo -e "${BLUE}Installing and configuring firewall...${NC}"
@@ -49,6 +58,14 @@ sudo ufw allow ssh
 sudo ufw enable
 echo -e "${GREEN}Firewall installed and configured!${NC}"
 echo ""
+clear
+# Print banner
+echo -e "${YELLOW}#######################################################"
+echo -e "#${BLUE}               Linux Security Script                ${YELLOW}#"
+echo -e "#${BLUE}                  Created By GiuCoder               ${YELLOW}#"
+echo -e "#######################################################${NC}"
+echo ""
+
 
 # Install and configure fail2ban
 echo -e "${BLUE}Installing and configuring fail2ban...${NC}"
@@ -58,6 +75,13 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 echo -e "${GREEN}Fail2ban installed and configured!${NC}"
 echo ""
+clear
+# Print banner
+echo -e "${YELLOW}#######################################################"
+echo -e "#${BLUE}               Linux Security Script                ${YELLOW}#"
+echo -e "#${BLUE}                  Created By GiuCoder               ${YELLOW}#"
+echo -e "#######################################################${NC}"
+echo ""
 
 # Disable root login and password authentication
 echo -e "${BLUE}Disabling root login and password authentication...${NC}"
@@ -66,6 +90,14 @@ sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh
 sudo systemctl restart sshd
 echo -e "${GREEN}Root login and password authentication disabled!${NC}"
 echo ""
+clear
+# Print banner
+echo -e "${YELLOW}#######################################################"
+echo -e "#${BLUE}               Linux Security Script                ${YELLOW}#"
+echo -e "#${BLUE}                  Created By GiuCoder               ${YELLOW}#"
+echo -e "#######################################################${NC}"
+echo ""
+
 
 # Reboot system
 zenity --info --title "Success" --text "LINUX HAS BEEN SECURED! LINUX WILL REBOOT SYSTEM."
