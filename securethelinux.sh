@@ -35,9 +35,9 @@ echo -e "#######################################################${NC}"
 echo ""
 
 # Update the system
+# Update the system
 echo -e "${BLUE}Updating system...${NC}"
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade -y
 echo -e "${GREEN}System updated!${NC}"
 echo ""
 clear
@@ -51,7 +51,7 @@ echo ""
 
 # Install and configure a firewall
 echo -e "${BLUE}Installing and configuring firewall...${NC}"
-sudo apt-get install ufw
+sudo apt-get install ufw -y
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
@@ -69,7 +69,7 @@ echo ""
 
 # Install and configure fail2ban
 echo -e "${BLUE}Installing and configuring fail2ban...${NC}"
-sudo apt-get install fail2ban
+sudo apt-get install fail2ban -y
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
@@ -85,9 +85,9 @@ echo ""
 
 # Disable root login and password authentication
 echo -e "${BLUE}Disabling root login and password authentication...${NC}"
-sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
-sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-sudo systemctl restart sshd
+sudo sed -i.bak 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+sudo sed -i.bak 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+sudo systemctl restart sshd"
 echo -e "${GREEN}Root login and password authentication disabled!${NC}"
 echo ""
 clear
